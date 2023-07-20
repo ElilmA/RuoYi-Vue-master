@@ -145,34 +145,34 @@
     <!-- 添加或修改员工管理对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body :close-on-click-modal="false">
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="员工头像">
-          <el-upload
-            class="avatar-uploader"
-            :action="uploadUrl"
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-            name="file"
-            ref="upload"
-            :headers="headers"
-            :before-upload="beforeAvatarUpload">
-            <img v-if="imgUrl" :src="imgUrl" class="avatar">
-            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-          </el-upload>
-        </el-form-item>
-        <el-form-item label="归属部门" prop="deptId">
-          <treeselect v-model="form.deptId" :options="deptOptions" :show-count="true" placeholder="请选择归属部门"/>
-        </el-form-item>
-        <el-form-item label="岗位ID" prop="postId">
-          <el-select v-model="form.postIds" multiple placeholder="请选择岗位">
-            <el-option
-              v-for="item in postOptions"
-              :key="item.postId"
-              :label="item.postName"
-              :value="item.postId"
-              :disabled="item.status == 1"
-            ></el-option>
-          </el-select>
-        </el-form-item>
+<!--        <el-form-item label="员工头像">-->
+<!--          <el-upload-->
+<!--            class="avatar-uploader"-->
+<!--            :action="uploadUrl"-->
+<!--            :show-file-list="false"-->
+<!--            :on-success="handleAvatarSuccess"-->
+<!--            name="file"-->
+<!--            ref="upload"-->
+<!--            :headers="headers"-->
+<!--            :before-upload="beforeAvatarUpload">-->
+<!--            <img v-if="imgUrl" :src="imgUrl" class="avatar">-->
+<!--            <i v-else class="el-icon-plus avatar-uploader-icon"></i>-->
+<!--          </el-upload>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="归属部门" prop="deptId">-->
+<!--          <treeselect v-model="form.deptId" :options="deptOptions" :show-count="true" placeholder="请选择归属部门"/>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="岗位ID" prop="postId">-->
+<!--          <el-select v-model="form.postIds" multiple placeholder="请选择岗位">-->
+<!--            <el-option-->
+<!--              v-for="item in postOptions"-->
+<!--              :key="item.postId"-->
+<!--              :label="item.postName"-->
+<!--              :value="item.postId"-->
+<!--              :disabled="item.status == 1"-->
+<!--            ></el-option>-->
+<!--          </el-select>-->
+<!--        </el-form-item>-->
         <el-form-item v-if="form.personnelId == undefined" label="用户账号" prop="personnelLoginName">
           <el-input v-model="form.personnelLoginName" placeholder="请输入用户账号"/>
         </el-form-item>
@@ -180,51 +180,51 @@
           <el-input v-model="form.personnelPassword" placeholder="请输入密码" type="password"
                     maxlength="20" show-password/>
         </el-form-item>
-        <el-form-item label="员工名字" prop="personnelName">
-          <el-input v-model="form.personnelName" placeholder="请输入员工名字"/>
+        <el-form-item label="用户名称" prop="personnelName">
+          <el-input v-model="form.personnelName" placeholder="请输入用户名称"/>
         </el-form-item>
         <el-form-item label="手机号码" prop="personnelPhone">
           <el-input v-model="form.personnelPhone" placeholder="请输入手机号码"/>
         </el-form-item>
-        <el-form-item label="性别" prop="personnelSex">
-          <el-select v-model="form.personnelSex" placeholder="请选择性别">
-            <el-option
-              v-for="dict in dict.type.sys_user_sex"
-              :key="dict.value"
-              :label="dict.label"
-              :value="dict.value"
-            ></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="状态" prop="personnelStatus">
-          <el-radio-group v-model="form.personnelStatus">
-            <el-radio
-              v-for="dict in dict.type.sys_staff_status"
-              :key="dict.value"
-              :label="dict.value"
-            >{{ dict.label }}
-            </el-radio>
-          </el-radio-group>
-        </el-form-item>
-        <el-form-item label="入职时间" prop="personnelEntryTime">
-          <el-date-picker clearable
-                          v-model="form.personnelEntryTime"
-                          type="date"
-                          value-format="yyyy-MM-dd"
-                          placeholder="请选择入职时间">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="离职时间" prop="personnelResignationTime">
-          <el-date-picker clearable
-                          v-model="form.personnelResignationTime"
-                          type="date"
-                          value-format="yyyy-MM-dd"
-                          placeholder="请选择离职时间">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="备注" prop="remark">
-          <el-input v-model="form.remark" type="textarea" placeholder="请输入内容"/>
-        </el-form-item>
+<!--        <el-form-item label="性别" prop="personnelSex">-->
+<!--          <el-select v-model="form.personnelSex" placeholder="请选择性别">-->
+<!--            <el-option-->
+<!--              v-for="dict in dict.type.sys_user_sex"-->
+<!--              :key="dict.value"-->
+<!--              :label="dict.label"-->
+<!--              :value="dict.value"-->
+<!--            ></el-option>-->
+<!--          </el-select>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="状态" prop="personnelStatus">-->
+<!--          <el-radio-group v-model="form.personnelStatus">-->
+<!--            <el-radio-->
+<!--              v-for="dict in dict.type.sys_staff_status"-->
+<!--              :key="dict.value"-->
+<!--              :label="dict.value"-->
+<!--            >{{ dict.label }}-->
+<!--            </el-radio>-->
+<!--          </el-radio-group>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="入职时间" prop="personnelEntryTime">-->
+<!--          <el-date-picker clearable-->
+<!--                          v-model="form.personnelEntryTime"-->
+<!--                          type="date"-->
+<!--                          value-format="yyyy-MM-dd"-->
+<!--                          placeholder="请选择入职时间">-->
+<!--          </el-date-picker>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="离职时间" prop="personnelResignationTime">-->
+<!--          <el-date-picker clearable-->
+<!--                          v-model="form.personnelResignationTime"-->
+<!--                          type="date"-->
+<!--                          value-format="yyyy-MM-dd"-->
+<!--                          placeholder="请选择离职时间">-->
+<!--          </el-date-picker>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="备注" prop="remark">-->
+<!--          <el-input v-model="form.remark" type="textarea" placeholder="请输入内容"/>-->
+<!--        </el-form-item>-->
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="submitForm">确 定</el-button>
@@ -449,7 +449,7 @@ export default {
       getPersonnel().then(response => {
         this.postOptions = response.posts;
         this.open = true;
-        this.title = "添加员工";
+        this.title = "新增用户";
         this.form.personnelPassword = this.initPassword;
         this.imgUrl = "";
       })
@@ -463,7 +463,7 @@ export default {
         this.postOptions = response.posts;
         this.$set(this.form, "postIds", response.postIds);
         this.open = true;
-        this.title = "修改员工";
+        this.title = "修改用户";
         this.form.personnelPassword = "";
         this.imgUrl = process.env.VUE_APP_BASE_API + this.form.avatar;
       });
