@@ -135,7 +135,12 @@
         <div class="main_video"></div>
       </div>
     </div>
+    <!--  底部  -->
+    <div class="el-login-footer">
+      <span><a href="https://beian.miit.gov.cn">冀ICP备2022004319号-3</a></span>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -669,6 +674,18 @@ export default {
 </script>
 
 <style>
+.el-login-footer {
+  height: 40px;
+  line-height: 40px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-family: Arial;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
 .content {
   /* width: 1920px;
   height: 969px; */
